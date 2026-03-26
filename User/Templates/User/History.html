@@ -1,0 +1,139 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,600;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Page Styling */
+        body {
+            background-color: #fdfaf5;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .services_section {
+            padding: 60px 0;
+        }
+
+        /* Container and Row alignment */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 15px;
+            border-top: 5px solid #b35900; /* Saffron Top Border */
+        }
+
+        /* Titles Styling */
+        .language_taital {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .language_taital_1 {
+            font-family: 'Crimson Text', serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            color: #b35900; /* Deep Saffron */
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* The Main Content Text */
+        .services_text {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        /* Adding a subtle highlight to the Malayalam text automatically */
+        .services_text b, .services_text strong {
+            color: #b35900;
+        }
+
+        /* Styling the table hidden in the background to ensure it doesn't break layout */
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            border: none !important;
+        }
+
+        /* Decorative Divider */
+        .language_taital_1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: #ffcc00; /* Gold divider */
+            margin: 15px auto;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container { padding: 20px; width: 90%; }
+            .language_taital_1 { font-size: 1.5rem; }
+            .services_text { font-size: 1.1rem; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+         {% csrf_token %} 
+         <table border="1" align="center" cellpadding="10">
+            <div class="services_section layout_padding" id="history">
+      <div class="container">
+         <div class="row">
+            <div  class="col-md-100">
+               <h1 class="language_taital">ചേലാമറ്റം </h1>
+               <h1 class="language_taital_1"> ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്ര ചരിത്രം</h1>
+               <p class="services_text">കേരളത്തിലെ ചേലാമറ്റത്ത് സ്ഥിതി ചെയ്യുന്ന ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രം, ഭക്തിയിലും പൂർവ്വിക
+            വിശ്വാസത്തിലും അധിഷ്ഠിതമായ അതിപുരാതനവും ചൈതന്യവത്തുമായ ഒരു പുണ്യസങ്കേതമാണ്. ഐതിഹ്യങ്ങളനുസരിച്ച്, ഈ ക്ഷേത്രത്തിന്റെ
+            ഉത്ഭവം മൂകാംബികാ ദേവിയുടെ സന്നിധിയിലേക്ക് തീർത്ഥാടനം നടത്തിയ ഭക്തരായ പൂർവ്വികരുടെ യാത്രയുമായി അഭേദ്യമായി
+            ബന്ധപ്പെട്ടിരിക്കുന്നു. അവരുടെ തീവ്രമായ ഭക്തിയുടെയും പ്രാർത്ഥനകളുടെയും ആത്മീയ തപസ്സിന്റെയും ഫലമായി, ഭഗവതിയുടെ
+            ദിവ്യസാന്നിധ്യം ഈ പുണ്യഭൂമിയിൽ കുടികൊണ്ടുവെന്നും, അങ്ങനെ പുഴക്കരക്കാവ് പ്രദേശം പവിത്രമാക്കപ്പെട്ട് ഒരു ശക്തമായ ആരാധനാ
+            കേന്ദ്രമായി മാറിയെന്നുമാണ് വിശ്വാസം.
+            <br><br>
+            സംരക്ഷണത്തിന്റെയും നീതിയുടെയും മാതൃവാത്സല്യത്തിന്റെയും പ്രതീകമായ ഭദ്രകാളിയുടെ അതിശക്തമായ രൂപത്തിലാണ് ഈ ക്ഷേത്രത്തിലെ
+            പ്രധാന പ്രതിഷ്ഠയായ വടക്കൻചൊവ്വ ഭഗവതിയെ ആരാധിക്കുന്നത്. ഭഗവതിയോടൊപ്പം ശിവഭഗവാൻ, ചാമുണ്ഡി, മുത്തപ്പൻ, നാഗരാജാവ്, നാഗയക്ഷി
+            എന്നീ ഉപദേവതകളെയും ഇവിടെ ഭക്തിപൂർവ്വം പ്രതിഷ്ഠിച്ചിരിക്കുന്നു. വിവിധ വിശ്വാസധാരകളെ ഉൾക്കൊള്ളുന്ന സവിശേഷമായ ഒരു ആത്മീയ
+            കേന്ദ്രമാണ് ഈ ക്ഷേത്രം. ഇവിടെ എത്തുന്ന ഭക്തരുടെ ആത്മാർത്ഥമായ പ്രാർത്ഥനകൾക്ക് ദേവീദേവന്മാർ ഉടൻ ഫലം നൽകുമെന്നും, അഭയം
+            തേടിയെത്തുന്ന ഏവർക്കും സംരക്ഷണവും കരുത്തും അനുഗ്രഹവും ചൊരിയുമെന്നും തലമുറകളായി ഭക്തജനങ്ങൾ വിശ്വസിച്ചുപോരുന്നു.
+            <br><br>
+            അതീവ ഭക്തിയോടും പരമ്പരാഗത ചടങ്ങുകളോടും ജനപങ്കാളിത്തത്തോടും കൂടി ആഘോഷിക്കുന്ന മകരം ഇരുപത്തെട്ടുച്ചാൽ മഹോത്സവമാണ് ഈ
+            ക്ഷേത്രത്തിലെ ഏറ്റവും പ്രധാനപ്പെട്ട ആഘോഷങ്ങളിലൊന്ന്. ദേവീദേവന്മാരെ പ്രീതിപ്പെടുത്തുന്നതിനും തലമുറകളായി കൈമാറിവന്ന പുരാതന
+            ആചാരങ്ങൾ നിലനിർത്തുന്നതിനുമായി 'വലിയ ഗുരുതി' പോലെയുള്ള വഴിപാടുകളും ശക്തമായ കർമ്മങ്ങളും ഇവിടെ നടന്നുവരുന്നു. ഇന്നും,
+            ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രം പൂർവ്വിക ഭക്തിയുടെയും ദൈവിക സാന്നിധ്യത്തിന്റെയും കാലാതീതമായ
+            ആത്മീയ പൈതൃകത്തിന്റെയും ജീവിക്കുന്ന പ്രതീകമായി നിലകൊള്ളുന്നു; ഒപ്പം തളരാത്ത കൃപാകടാക്ഷത്താൽ ഭക്തജനങ്ങളെ നയിക്കുകയും
+            സംരക്ഷിക്കുകയും ചെയ്യുന്നു.</p>
+               </div>
+
+         </div>
+      </div>
+   </div>
+              </form>
+</body>
+</html>
+{% endblock content %}

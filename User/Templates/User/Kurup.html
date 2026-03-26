@@ -1,0 +1,84 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurup</title>
+
+<style>
+body{
+    background: linear-gradient(to right,#fff6e6,#ffe0b3);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    margin-top:30px;
+    color:#7a2e00;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+table{
+    background:#ffffff;
+    width:70%;
+    border-radius:10px;
+    border:none;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+td{
+    border:none;
+}
+
+img{
+    border-radius:10px;
+    border:4px solid #7a2e00;
+    padding:4px;
+}
+
+h4{
+    text-align:justify;
+    line-height:1.8;
+    font-size:16px;
+    color:#333;
+    padding:10px 20px;
+}
+
+form{
+    margin-bottom:40px;
+}
+</style>
+
+</head><body>
+    <form action="" method="post">
+         {% csrf_token %} 
+         <h2 align="center"> മുത്തപ്പൻ (കുറുപ്പ്)</h2>
+         <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td colspan="2" align="center">
+                <img src="{% static 'Main/images/kurup.jpg' %}" width="150" height="150" alt="Profile Picture">
+            </td>
+            </tr>
+            <!-- <tr>
+                <td><b>  Muthappan (Kurup)</b></td>
+            </tr> -->
+            <tr>
+                <td><h4>
+                    കേരളത്തിൽ പരക്കെ ആരാധിക്കപ്പെടുന്ന വേറിട്ടൊരു ജനകീയ ദൈവമാണ് കുറുപ്പ് എന്നും ഭക്തിപൂർവ്വം വിളിക്കപ്പെടുന്ന മുത്തപ്പൻ.
+                    സംരക്ഷണം, നീതി, കരുണ എന്നിവയുടെ പ്രതീകമായ മുത്തപ്പൻ, ശിവന്റെയും വിഷ്ണുവിന്റെയും ചൈതന്യങ്ങൾ ഒത്തുചേർന്ന ദൈവിക രൂപമാണെന്ന്
+                    വിശ്വസിക്കപ്പെടുന്നു. കേരളത്തിലെ നിരവധി ക്ഷേത്രങ്ങളിലും കാവുകളിലും മുത്തപ്പനെ ആരാധിക്കുന്നത് 'തെയ്യം' എന്ന പരമ്പരാഗത
+                    അനുഷ്ഠാന കലാരൂപത്തിലൂടെയാണ്. ജാതിമത ഭേദമന്യേ എല്ലാവരുടെയും പ്രാർത്ഥനകൾ കേൾക്കുന്ന മുത്തപ്പൻ, ഭക്തർക്ക് സംരക്ഷണവും
+                    ഐശ്വര്യവും നൽകി ദുരിതങ്ങളിൽ നിന്ന് മോചിപ്പിക്കുമെന്ന് വിശ്വസിക്കപ്പെടുന്നു.
+                    
+                    കരുണാനിധിയായ മുത്തപ്പനെ നീതിക്കും ആത്മീയ വഴികാട്ടലിനുമായി ഭക്തർ അതീവ ഭക്തിയോടെ അഭയം പ്രാപിക്കുന്നു. ചേലാമറ്റം ശ്രീ
+                    പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രത്തിൽ, മുത്തപ്പനെ (കുറുപ്പ്) അതീവ ആദരവോടെയാണ് ഭക്തർ ആരാധിക്കുന്നത്. മുത്തപ്പന്റെ
+                    ദിവ്യസാന്നിധ്യം തങ്ങളുടെ ജീവിതത്തിൽ സുരക്ഷയും കരുത്തും ഐക്യവും പ്രദാനം ചെയ്യുമെന്ന് ഭക്തജനങ്ങൾ ഉറച്ചു വിശ്വസിക്കുന്നു.
+                </h4></td>
+            </tr>
+              </form>
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,245 @@
+{% extends 'Admin/Header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bookings</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .main-table th,
+        .main-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        .main-table tr:first-child {
+            background: #343a40;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .main-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .main-table tr:hover {
+            background: #eef3f7;
+        }
+
+        /* Status Styles */
+        .status-pending { color: #ffc107; font-weight: bold; }
+        .status-accepted { color: #28a745; font-weight: bold; }
+        .status-rejected { color: #dc3545; font-weight: bold; }
+        .status-completed { color: #007bff; font-weight: bold; }
+
+        /* Action Buttons */
+        a {
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #fff;
+            margin: 2px;
+            display: inline-block;
+        }
+        a[href*="accept"] { background: #28a745; }
+        a[href*="reject"] { background: #dc3545; }
+        a[href*="complete"] { background: #007bff; }
+        a:hover { opacity: 0.85; }
+
+        /* Nested Items Table */
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #fafafa;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .items-table th,
+        .items-table td {
+            padding: 8px;
+            font-size: 13px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .items-table tr:first-child {
+            background: #6c757d;
+            color: white;
+            font-weight: bold;
+        }
+
+        .items-table tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .items-table tr:hover {
+            background: #e9ecef;
+        }
+
+        b {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .main-table, .items-table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    {% if messages %}
+        {% for m in messages %}
+            <script>alert("{{ m }}")</script>
+        {% endfor %}
+    {% endif %}
+
+    <table class="main-table">
+        <tr>
+            <td>SI NO</td>
+            <td>Booking No</td>
+            <td>User</td>
+            <td>Booking Date</td>
+            <td>From Date</td>
+            <td>To Date</td>
+            <td>Total</td>
+            <td>Status</td>
+            <td>Actions</td>
+        </tr>
+
+        {% for b in bookingData %}
+        {% if b.booking_status != 0 %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ b.booking_number }}</td>
+            <td>{{ b.user_id.user_name }}</td>
+            <td>{{ b.created_at|date:"Y-m-d" }}</td>
+            <td>{{ b.booking_from_date|date:"Y-m-d" }}</td>
+            <td>
+                {% if b.booking_to_date %}
+                    {{ b.booking_to_date|date:"Y-m-d" }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>₹{{ b.booking_total }}</td>
+            
+            <td>
+                {% if b.booking_status == 1 %} <span class="status-pending">Confirmed / Pending Pooja</span>
+                {% elif b.booking_status == 2 %} <span class="status-rejected">Cancelled</span>
+                {% elif b.booking_status == 3 %} <span class="status-completed">Completed</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {% if b.booking_status == 1 %}
+                    <a href="{% url 'Admin:booking_complete' b.id %}" onclick="return confirm('Mark this pooja as completed?');">Mark Completed</a>
+                    <a href="{% url 'Admin:booking_reject' b.id %}" onclick="return confirm('Are you sure you want to cancel this booking?');">Cancel</a>
+                {% elif b.booking_status == 2 %}
+                    <span style="color: #dc3545; font-weight: bold;">Booking Cancelled</span>
+                {% elif b.booking_status == 3 %}
+                    <span style="color: #28a745; font-weight: bold;">Pooja Finished</span>
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="9">
+                <div style="text-align: left; padding: 10px;">
+                    <b>Pooja Items Detailed View:</b>
+                    <table class="items-table">
+                        <tr>
+                            <th>SI NO</th>
+                            <th>Deity</th>
+                            <th>Pooja Name</th>
+                            <th>Devotee Name</th>
+                            <th>Birthstar</th>
+                            <th>Special Request</th>
+                            <th>Date & Time</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Total</th>
+                        </tr>
+
+                        {% for it in b.items.all %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            
+                            <td><b style="color: #d35400;">{{ it.pooja_id.deity_id.deity_name }}</b></td>
+                            
+                            <td>
+                                <b>{{ it.pooja_id.pooja_name }}</b><br>
+                                <small style="color: #666;">Duration: {{ it.pooja_id.pooja_duration_mins }} mins</small>
+                            </td>
+                            
+                            <td>{{ it.devotee_name|default:"-" }}</td>
+                            <td>{{ it.birthstar_id.birthstar_name|default:"-" }}</td>
+                            
+                            <td>
+                                {% if it.special_request %}
+                                    <span style="background: #fff3cd; padding: 3px 6px; border-radius: 4px; font-size: 11px;">
+                                        {{ it.special_request }}
+                                    </span>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                            
+                            <td>
+                                {{ it.pooja_date|date:"d M Y" }}<br>
+                                <small style="color: #666;">
+                                    {% if it.pooja_time %}
+                                        {{ it.pooja_time|time:"h:i A" }}
+                                    {% elif it.pooja_id.pooja_time_label %}
+                                        {{ it.pooja_id.pooja_time_label }}
+                                    {% else %}
+                                        Any Time
+                                    {% endif %}
+                                </small>
+                            </td>
+                            
+                            <td>{{ it.quantity }}</td>
+                            <td>₹{{ it.rate }}</td>
+                            <td><b>₹{{ it.line_total }}</b></td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="10">No items found</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+{% endblock content %}

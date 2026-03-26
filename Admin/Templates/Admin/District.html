@@ -1,0 +1,86 @@
+{% extends 'Admin/Header.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Django messages -->
+    {% if messages %}
+        {% for m in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ m }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Form Card -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">
+                {% if editData %}Update District{% else %}Add District{% endif %}
+            </h4>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>District</label>
+                    <input type="text" 
+                           name="txt_district" 
+                           class="form-control"
+                           placeholder="Enter district name"
+                           value="{% if editData %}{{ editData.district_name }}{% endif %}">
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" 
+                           name="btn_submit" 
+                           class="btn btn-primary px-4"
+                           value="{% if editData %}Update{% else %}Submit{% endif %}">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title mb-4">District List</h4>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>SI NO</th>
+                            <th>District</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i in districtData %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.district_name }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'Admin:district_delete' i.id %}" 
+                                   class="btn btn-sm btn-danger">
+                                   Delete
+                                </a>
+
+                                <a href="{% url 'Admin:district_edit' i.id %}" 
+                                   class="btn btn-sm btn-info">
+                                   Edit
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

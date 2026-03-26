@@ -1,0 +1,84 @@
+{% extends 'Guest/Header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamundi</title>
+
+<style>
+body{
+    background: linear-gradient(to right,#fff7f0,#ffe4d6);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    margin-top:30px;
+    color:#8B0000;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+table{
+    background:#ffffff;
+    width:70%;
+    border-radius:10px;
+    border:none;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+td{
+    border:none;
+}
+
+img{
+    border-radius:10px;
+    border:4px solid #8B0000;
+    padding:3px;
+}
+
+h4{
+    text-align:justify;
+    line-height:1.8;
+    font-size:16px;
+    color:#333;
+    padding:10px 20px;
+}
+
+form{
+    margin-bottom:40px;
+}
+</style>
+
+</head><body>
+    <form action="" method="post">
+         {% csrf_token %} 
+         <h2 align="center">ചാമുണ്ഡേശ്വരി</h2>
+         <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td colspan="2" align="center">
+                <img src="{% static 'Main/images/chamundi.jpg' %}" width="150" height="150" alt="Profile Picture">
+            </td>
+            </tr>
+            <!-- <tr>
+                <td><b>  Chamundeswari</b></td>
+            </tr> -->
+            <tr>
+                <td><h4>
+                    തിന്മയെ നശിപ്പിക്കുന്നവളും നീതിയെ സംരക്ഷിക്കുന്നവളുമായ ആദിപരാശക്തിയുടെ അതിശക്തമായ ഭാവമാണ് ചാമുണ്ഡേശ്വരി. ഹൈന്ദവ
+                    പുരാണങ്ങൾ അനുസരിച്ച്, ചണ്ഡൻ, മുണ്ഡൻ എന്നീ അസുരന്മാരെ നിഗ്രഹിക്കാനായി ദേവി എടുത്ത രൗദ്രരൂപമാണിത്. ഇത് തിന്മയ്ക്ക് മേൽ
+                    നന്മ നേടുന്ന ശാശ്വത വിജയത്തെ സൂചിപ്പിക്കുന്നു. മഹിഷാസുരനെ വധിച്ച 'മഹിഷാസുര മർദ്ദിനി'യായും ദേവി ആരാധിക്കപ്പെടുന്നു; ഇത്
+                    ദൈവികമായ കരുത്തിന്റെയും ധൈര്യത്തിന്റെയും പ്രതീകമാണ്.
+                    
+                    സംരക്ഷണത്തിനും ധൈര്യത്തിനും ആത്മീയബലത്തിനുമായി ഭക്തർ ചാമുണ്ഡേശ്വരി ദേവിയെ ഭജിക്കുന്നു. വിഘ്നങ്ങൾ നീക്കുന്നവളും നെഗറ്റീവ്
+                    ഊർജ്ജങ്ങളിൽ നിന്ന് ഭക്തരെ കാത്തുരക്ഷിക്കുന്നവളുമായ ജഗദംബികയുടെ ചൈതന്യമാണ് ദേവി. ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ
+                    ഭഗവതി ക്ഷേത്രത്തിൽ അതീവ ഭക്തിയോടെയാണ് ചാമുണ്ഡേശ്വരിയെ ആരാധിക്കുന്നത്. ദേവിയുടെ ദിവ്യമായ അനുഗ്രഹം സമാധാനവും ഐശ്വര്യവും
+                    സംരക്ഷണവും നൽകുമെന്ന് ഭക്തജനങ്ങൾ ഉറച്ചു വിശ്വസിക്കുന്നു.
+                </h4></td>
+            </tr>
+              </form>
+</body>
+</html>
+{% endblock content %}

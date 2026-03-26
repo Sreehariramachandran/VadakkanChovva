@@ -1,0 +1,121 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editprofile</title>
+    <style>
+        .edit-profile-container {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+            min-height: 85vh;
+        }
+        .profile-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .profile-card h2 {
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .form-table td {
+            padding: 12px 5px;
+            vertical-align: middle;
+            color: #555;
+            font-weight: 500;
+        }
+        .form-table input[type="text"],
+        .form-table input[type="email"],
+        .form-table textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        .form-table input:focus,
+        .form-table textarea:focus {
+            outline: none;
+            border-color: #ff4e50;
+        }
+        .form-table textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .btn-update {
+            background-color: #252525;
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .btn-update:hover {
+            background-color: #ff4e50;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="edit-profile-container">
+        <div class="profile-card">
+            <form action="" method="post">
+                <h2 align="center">Edit Profile</h2>
+                {% csrf_token %} 
+                <table class="form-table">            
+                    <tr>
+                        <td>Name</td>
+            <td><input required type="text" name="txt_name" title="Name Allows Only Alphabets,Spaces and First Letter Must Be Capital Letter" pattern="^[A-Z]+[a-zA-Z ]*$" value="{{userData.user_name}}"/></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="email" name="txt_email" value="{{userData.user_email}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Contact</td>
+                         <td><input type="text" required name="txt_contact" pattern="[7-9]{1}[0-9]{9}" 
+                title="Phone number with 7-9 and remaing 9 digit with 0-9" value="{{userData.user_contact}}"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>
+                            <textarea name="txt_address">{{userData.user_address}}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" value="Update Profile" class="btn-update">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% if msg %}
+<script>
+alert("{{msg}}")
+    window.location="{% url 'User:Myprofile' %}"
+</script>
+{% endif %}
+{% endblock content %}

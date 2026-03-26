@@ -1,0 +1,270 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Pooja | Sacred Offerings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    :root {
+        --primary-color: #ff7a00;
+        --secondary-color: #e66c00;
+        --bg-color: #f8f9fa;
+        --text-dark: #333;
+        --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+        background-color: var(--bg-color);
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    /* --- Search Section --- */
+    .search-section {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        margin-bottom: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .search-form {
+        display: flex;
+        gap: 15px;
+        flex-grow: 1;
+    }
+
+    .input-group {
+        position: relative;
+        flex-grow: 1;
+    }
+
+    .search-form input[type="text"], 
+    .search-form select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .search-form input:focus, 
+    .search-form select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.1);
+    }
+
+    .btn-search {
+        padding: 12px 30px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .btn-search:hover {
+        background: var(--secondary-color);
+    }
+
+    .cart-link {
+        background: #fff3e6;
+        padding: 12px 20px;
+        border-radius: 8px;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+    }
+
+    .cart-link:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    /* --- Pooja Grid --- */
+    .pooja-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .pooja-card {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-top: 4px solid var(--primary-color);
+    }
+
+    .pooja-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .pooja-card h3 {
+        margin: 0 0 15px 0;
+        color: var(--primary-color);
+        font-size: 1.25rem;
+    }
+
+    .pooja-info {
+        margin-bottom: 20px;
+    }
+
+    .pooja-info p {
+        margin: 8px 0;
+        font-size: 0.95rem;
+        color: #666;
+    }
+
+    .pooja-info strong {
+        color: var(--text-dark);
+    }
+
+    .rate-tag {
+        font-size: 1.4rem;
+        color: #27ae60;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .btn-booking {
+        display: block;
+        text-align: center;
+        background: var(--primary-color);
+        color: white !important;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+    .btn-booking:hover {
+        background: var(--secondary-color);
+        text-decoration: none;
+    }
+
+    .status-unavailable {
+        display: block;
+        text-align: center;
+        color: #d63031;
+        background: #fff5f5;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .search-section {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .search-form {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="search-section">
+            <form action="" method="post" class="search-form">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" name="txt_search" placeholder="Search for a Pooja...">
+                </div>
+                <div class="input-group">
+                    <select name="sel_deity" id="sel_deity">
+                        <option value="">-- Select Deity --</option>
+                        {% for i in deities %}
+                        <option value="{{ i.id }}">{{ i.deity_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn-search">
+                    <i class="fa fa-search"></i> Search
+                </button>
+            </form>
+
+            <a href="{% url 'User:MyCart' %}" class="cart-link">
+                <i class="fa fa-shopping-cart"></i> View My Cart
+            </a>
+        </div>
+
+        <div class="pooja-grid">
+            {% for i in poojaData %}
+            <div class="pooja-card">
+                <div>
+                    <h3>{{ i.pooja_name }}</h3>
+                    <div class="pooja-info">
+                        <p><strong><i class="fa fa-om"></i> Deity:</strong> {{ i.deity_id.deity_name }}</p>
+                        <!-- <p><strong><i class="fa fa-clock"></i> Duration:</strong> {{ i.pooja_duration_mins }} mins</p> -->
+                        <p><strong><i class="fa fa-info-circle"></i> Details:</strong> {{ i.pooja_details|truncatechars:80 }}</p>
+                    </div>
+                    <span class="rate-tag">₹{{ i.pooja_amount }}</span>
+                </div>
+
+                <div class="card-footer">
+                    {% if i.pooja_is_active %}
+                    <a href="{% url 'User:AddCart' i.id %}" class="btn-booking">Book Now</a>
+                    {% else %}
+                    <span class="status-unavailable">Currently Unavailable</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div style="grid-column: 1 / -1; text-align: center; padding: 50px;">
+                <p style="color: #999; font-size: 1.2rem;">No Poojas found matching your criteria.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% if msg %}
+    <script>
+        alert("{{ msg }}");
+        window.location = "{% url 'User:ViewPoojas' %}";
+    </script>
+    {% endif %}
+
+</body>
+
+</html>
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1" align="center" cellpadding="10">
+            <div class="footer_section" id="contact">
+      <div class="container">
+         <div class="footer_content text-center">
+
+            <!-- Logo Circle -->
+            <img src="{% static 'Main/images/logo11.png' %}" style="width: 150px;">
+
+            <!-- <h6 class="sub_title">DAKSHINA KASHI</h6> -->
+
+            <h2 class="temple_name">
+               CHELAMATTOM SREE PUZHAKKARAKAVU VADAKKANCHOWA BHAGAVATHI TEMPLE
+            </h2>
+
+            <p class="footer_info">
+                CHELAMATTOM, OKKAL P.O, PERUMBAVOOR,<BR> ERNAKULAM, KERALA
+                 683 550
+            </p>
+
+            <p class="footer_info">
+               Email id: puzhakkarakkavchm@gmail.com
+            </p>
+
+            <p class="footer_info">
+               Phone Numbers : 9388227128 , 7561805819
+            </p>
+
+            <p class="footer_links">
+               Terms and Conditions & Privacy Policy
+            </p>
+
+         </div>
+      </div>
+   </div>
+    </form>
+</body>
+
+</html>
+{% endblock content %}

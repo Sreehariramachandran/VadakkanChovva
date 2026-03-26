@@ -1,0 +1,196 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<style>
+    :root {
+        --primary-color: #ff7a00;
+        --secondary-color: #e66c00;
+        --bg-color: #fdfaf5;
+        --text-dark: #333;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-dark);
+        margin: 0;
+        padding: 0;
+    }
+
+    .profile-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh;
+        padding: 20px;
+    }
+
+    .profile-card {
+        background: white;
+        width: 100%;
+        max-width: 500px;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 6px solid var(--primary-color);
+    }
+
+    h2 {
+        color: var(--primary-color);
+        font-weight: 600;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .profile-img-container {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    .profile-img-container img {
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .profile-img-container img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Styling the table to act like a list */
+    .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+        border: none !important;
+    }
+
+    .profile-table tr {
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .profile-table tr:last-child {
+        border-bottom: none;
+    }
+
+    .profile-table td {
+        padding: 15px 10px;
+        border: none !important;
+    }
+
+    .profile-table b {
+        color: #777;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .data-value {
+        color: var(--text-dark);
+        font-weight: 500;
+        text-align: right;
+    }
+
+    /* Action Links */
+    .action-links {
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .action-links a {
+        text-decoration: none;
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: 0.3s;
+        padding: 8px 15px;
+        border-radius: 5px;
+    }
+
+    .action-links a:hover {
+        background: #fff5eb;
+        color: var(--secondary-color);
+    }
+
+    .divider {
+        color: #ddd;
+        margin: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+        .profile-card { padding: 25px; }
+        .data-value { text-align: left; display: block; margin-top: 5px; }
+    }
+</style>
+
+<body>
+    <div class="profile-wrapper">
+        <div class="profile-card">
+            <form action="" method="post">
+                {% csrf_token %} 
+                <h2>My Profile</h2>
+                
+                <div class="profile-img-container">
+                    <img src="{{ userData.user_photo.url }}" width="150" height="150" alt="Profile Picture">
+                </div>
+
+                <table class="profile-table" align="center">
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td class="data-value">{{ userData.user_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td class="data-value">{{ userData.user_email }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Contact</b></td>
+                        <td class="data-value">{{ userData.user_contact }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Address</b></td>
+                        <td class="data-value">{{ userData.user_address }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>District</b></td>
+                        <td class="data-value">{{ userData.place_id.district_id.district_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Place</b></td>
+                        <td class="data-value">{{ userData.place_id.place_name }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="action-links">
+                            <a href="{% url 'User:Editprofile' %}"><i class="fa fa-user-edit"></i> Edit Profile</a>
+                            <span class="divider">|</span>
+                            <a href="{% url 'User:Changepassword' %}"><i class="fa fa-key"></i> Change Password</a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            {% if msg %}
+            <script>
+                alert("{{msg}}")
+                window.location = "{% url 'User:Myprofile' %}"
+            </script>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

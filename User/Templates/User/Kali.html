@@ -1,0 +1,88 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kali</title>
+
+<style>
+body{
+    background: linear-gradient(to right,#fff5f5,#ffe6e6);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    margin-top:30px;
+    color:#8B0000;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+table{
+    background:white;
+    border-radius:10px;
+    border:none;
+    width:70%;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+td{
+    border:none;
+}
+
+img{
+    border-radius:10px;
+    border:4px solid #8B0000;
+    padding:3px;
+}
+
+h4{
+    text-align:justify;
+    line-height:1.7;
+    font-size:16px;
+    color:#333;
+    padding:10px 20px;
+}
+
+form{
+    margin-bottom:40px;
+}
+</style>
+
+</head>
+<body>
+    <form action="" method="post">
+         {% csrf_token %} 
+         <h2 align="center">ഭദ്രകാളി</h2>
+         <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td colspan="2" align="center">
+                <img src="{% static 'Main/images/wp8977912.jpg' %}" width="150" height="150" alt="Profile Picture">
+            </td>
+            </tr>
+            <!-- <tr>
+                <td align="center"><b> Bhadrakali</b></td>
+            </tr> -->
+            <tr>
+                <td><h4>
+
+                തിന്മയെ നശിപ്പിക്കുന്നതിനും പ്രപഞ്ചത്തെ സംരക്ഷിക്കുന്നതിനുമായി പരമശിവന്റെ രൗദ്രചൈതന്യത്തിൽ നിന്നും ഉത്ഭവിച്ച
+                ആദിപരാശക്തിയുടെ അതിശക്തവും ഭക്തിനിർഭരവുമായ രൂപമാണ് ഭദ്രകാളി. ദൈവികമായ കരുത്തിന്റെയും ധൈര്യത്തിന്റെയും അധർമ്മത്തിന്
+                മേലുള്ള ധർമ്മത്തിന്റെ വിജയത്തിന്റെയും പ്രതീകമാണ് ദേവി. പുരാണങ്ങൾ അനുസരിച്ച്, ദാരിക നിഗ്രഹത്തിനായി അവതരിച്ച ഭദ്രകാളി,
+                തിന്മയ്ക്ക് മേൽ നന്മ നേടുന്ന വിജയത്തെയും ധർമ്മസംരക്ഷണത്തെയുമാണ് സൂചിപ്പിക്കുന്നത്. കേരളത്തിലെ ക്ഷേത്ര ആചാരങ്ങളിൽ, ഭക്തരെ
+                സംരക്ഷിക്കുകയും അവർക്ക് ഐശ്വര്യവും ധൈര്യവും ക്ഷേമവും നൽകി അനുഗ്രഹിക്കുകയും ചെയ്യുന്ന പരമോന്നത മാതൃരൂപമായ
+                'ഭഗവതി'യായിട്ടാണ് ഭദ്രകാളിയെ ആരാധിച്ചുവരുന്നത്.
+                
+                ജീവിതത്തിലെ കഷ്ടതകളിൽ നിന്നുള്ള മോചനത്തിനും വിഘ്നങ്ങൾ നീങ്ങുന്നതിനും സമാധാനവും ഐശ്വര്യവും കൈവരുന്നതിനുമായി ഭക്തർ അതീവ
+                ഭക്തിയോടെ ദേവിയെ പ്രാർത്ഥിക്കുന്നു. ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രത്തിൽ, ഭദ്രകാളിയെ അതിശക്തയായ
+                കാവൽദൈവമായിട്ടാണ് ആരാധിക്കുന്നത്. ദേവിയുടെ ദിവ്യമായ അനുഗ്രഹം തങ്ങളുടെ ജീവിതത്തിൽ കരുത്തും സുരക്ഷയും ഐക്യവും നൽകുമെന്ന്
+                ഭക്തജനങ്ങൾ ഉറച്ചു വിശ്വസിക്കുന്നു.
+                </h4></td>
+            </tr>
+              </form>
+</body>
+</html>
+{% endblock content %}

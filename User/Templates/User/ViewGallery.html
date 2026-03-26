@@ -1,0 +1,141 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Gallery</title>
+    <style>
+        body {
+            background-color: #f4f7f6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Headings */
+        .section-title {
+            color: #ff9933;
+            border-bottom: 3px solid #ff9933;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin: 40px 0 20px 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Grid Layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        /* Media Container */
+        .media-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .media-container img, .media-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images/videos fill the space without distortion */
+        }
+
+        /* Content Styling */
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-description {
+            font-size: 15px;
+            color: #555;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    
+    <h2 class="section-title">Photo Gallery</h2>
+    <div class="gallery-grid">
+        {% for i in g_data %}
+            {% if ".mp4" not in i.gallery_file.url and ".mov" not in i.gallery_file.url %}
+            <div class="card">
+                <div class="media-container">
+                    <img src="{{ i.gallery_file.url }}" alt="Gallery Image">
+                </div>
+                <div class="card-content">
+                    <p class="card-description">{{ i.gallery_description }}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% empty %}
+            <p class="no-data">No photos available.</p>
+        {% endfor %}
+    </div>
+
+    <h2 class="section-title">Video Gallery</h2>
+    <div class="gallery-grid">
+        {% for i in g_data %}
+            {% if ".mp4" in i.gallery_file.url or ".mov" in i.gallery_file.url %}
+            <div class="card">
+                <div class="media-container">
+                    <video src="{{ i.gallery_file.url }}" controls></video>
+                </div>
+                <div class="card-content">
+                    <p class="card-description">{{ i.gallery_description }}</p>
+                </div>
+            </div>
+            {% endif %}
+        {% empty %}
+            <p class="no-data">No videos available.</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>
+{% endblock content %}

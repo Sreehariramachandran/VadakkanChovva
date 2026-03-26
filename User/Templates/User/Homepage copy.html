@@ -1,0 +1,546 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Oinia</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" type="text/css" href="{% static 'Main/css/bootstrap.min.css' %}">
+   <!-- style css -->
+   <link rel="stylesheet" type="text/css" href="{% static 'Main/css/style.css' %}">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="{% static 'Main/css/responsive.css' %}">
+   <!-- fevicon -->
+   <link rel="icon" href="{% static 'Main/images/fevicon.png' %}" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="{% static 'Main/css/jquery.mCustomScrollbar.min.css' %}">
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <!-- owl stylesheets -->
+   <link rel="stylesheet" href="{% static 'Main/css/owl.carousel.min.css' %}">
+   <!-- <link rel="stylesheet" href="{% static 'Main/css/owl.theme.default.min.css' %}"> -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen">
+   <style>
+      @media (min-width: 992px) {
+         .five-column .custom-col {
+            flex: 0 0 20%;
+            max-width: 20%;
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <!--header section start -->
+   <div class="header_section">
+      <div class="container-fluid">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo"><a href="index.html">
+               <!-- <img src="{% static 'Main/images/logo.png' %}"> -->
+            </a></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                     <a class="nav-link" href="{% url 'User:Homepage' %}">Home</a>
+                  </li>
+                  
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        About Temple
+                     </a>
+                     <div class="dropdown-menu" aria-labelledby="navbarDropdownInfo">
+                        <a class="dropdown-item" href="#history">History</a>
+                        <a class="dropdown-item" href="#admin">Administration</a>
+                        <a class="dropdown-item" href="#festival">Festivals</a>
+                     </div>
+                  </li>
+                  
+                  <li class="nav-item">
+                     <a class="nav-link" href="{% url 'User:ViewPoojas' %}">Pooja</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="{% url 'User:ViewGallery' %}">Gallery</a>
+                  </li>
+                 
+                  <li class="nav-item">
+                     <a class="nav-link" href="{% url 'User:Feedback' %}">FeedBack</a>
+                  </li>
+                   <li class="nav-item">
+                     <a class="nav-link" href="#contact">Contact Us</a>
+                  </li>
+               </ul>
+
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        My Account
+                     </a>
+                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="{% url 'User:Myprofile' %}">View Profile</a>
+                        <a class="dropdown-item" href="{% url 'User:Mybooking' %}">My Bookings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="{% url 'User:logout' %}">Logout</a>
+                     </div>
+                  </li>
+               </ul>
+            </div>
+
+            <style>
+               /* Custom Saffron styling for the dropdown items */
+               .dropdown-item:hover {
+                  background-color: #ff7a00;
+                  color: white !important;
+               }
+               .dropdown-menu {
+                  border-radius: 8px;
+                  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                  border: 1px solid #eee;
+               }
+               .nav-link i {
+                  margin-right: 5px;
+               }
+            </style>
+         </nav>
+      </div>
+      <!--banner section start -->
+      <div class="banner_section layout_padding">
+         <div class="container">
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <p class="banner_text">ചേലാമറ്റം</p>
+                     <h2 class="banner_taital">ശ്രീ <br> പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗ‌വതി ക്ഷേത്രം</h2>
+                     <!-- <div class="read_bt"><a href="#">Read More</a></div> -->
+                  </div>
+                  <div class="carousel-item">
+                     <p class="banner_text">ചേലാമറ്റം </p>
+                     <h1 class="banner_taital">ശ്രീ <br>പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗ‌വതി ക്ഷേത്രം</h1>
+                     <!-- <div class="read_bt"><a href="#">Read More</a></div> -->
+                  </div>
+                  <div class="carousel-item">
+                     <p class="banner_text">ചേലാമറ്റം</p>
+                     <h1 class="banner_taital">ശ്രീ <br>പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗ‌വതി ക്ഷേത്രം</h1>
+                     <!-- <div class="read_bt"><a href="#">Read More</a></div> -->
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--banner section end -->
+   </div>
+   <div class="container">
+      <!-- <div class="play_icon"><a href="#"><img src="{% static 'Main/images/play-icon.png' %}"></a></div> -->
+   </div>
+   <!--header section end -->
+   <!--language  section start -->
+   <div class="language_section layout_padding">
+      <div class="container">
+         <div class="language_section_2 layout_padding">
+            <div class="row five-column">
+
+               <div class="custom-col col-sm-6">
+                  <div class="deity_card">
+                     <img src="{% static 'Main/images/sivaling.png' %}" class="img-fluid" alt="ശിവൻ">
+                     <h6>ശിവൻ</h6>
+                  </div>
+                   <div class="readmore_bt"><a href="{% url 'User:Shivan' %}">Read More</a></div>
+               </div>
+
+               <div class="custom-col col-sm-6">
+                  <div class="deity_card active">
+                     <img src="{% static 'Main/images/1000246069-Picsart-BackgroundRemover.jpg.png' %}" class="img-fluid" alt="ഭദ്രകാളി">
+                     <h6>ഭദ്രകാളി</h6>
+                  </div>
+                   <div class="readmore_bt active"><a href="{% url 'User:Kali' %}"> Read More</a></div>
+               </div>
+
+               <div class="custom-col col-sm-6">
+                  <div class="deity_card">
+                     <img src="{% static 'Main/images/wp8977912-Picsart-BackgroundRemover.jpg' %}" class="img-fluid" alt="ചാമുണ്ഡി">
+                     <h6>ചാമുണ്ഡി</h6>
+                  </div>
+                 <div class="readmore_bt"><a href="{% url 'User:Chamundi' %}"> Read More</a></div>
+               </div>
+
+               <div class="custom-col col-sm-6">
+                  <div class="deity_card">
+                     <img src="{% static 'Main/images/images-Picsart-BackgroundRemover.jpg' %}" class="img-fluid" alt="നാഗരാജാവും നാഗയക്ഷിയും">
+                     <h6>നാഗരാജാവും<br>നാഗയക്ഷിയും</h6>
+                  </div>
+                  <div class="readmore_bt"><a href="{% url 'User:Nagam' %}"> Read More</a></div>
+               </div>
+               
+               <div class="custom-col col-sm-6">
+                  <div class="deity_card">
+                     <img src="{% static 'Main/images/wp8977912-Picsart-BackgroundRemover.jpg' %}" class="img-fluid" alt="മുത്തപ്പൻ">
+                     <h6>മുത്തപ്പൻ</h6>
+                  </div>
+                  <div class="readmore_bt"><a href="{% url 'User:Kurup' %}">Read More</a></div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--language  section end -->
+   <!--services section start -->
+   <div class="services_section layout_padding" id="history">
+      <div class="container">
+         <div class="row">
+            <div  class="col-md-100">
+               <h1 align="center"class="language_taital">ചേലാമറ്റം </h1>
+               <h1 align="center" class="language_taital_1"> ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്ര ചരിത്രം</h1>
+               <p  align="center"class="services_text">കേരളത്തിലെ ചേലാമറ്റത്ത് സ്ഥിതി ചെയ്യുന്ന ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രം, ഭക്തിയിലും പൂർവ്വിക
+               വിശ്വാസത്തിലും അധിഷ്ഠിതമായ അതിപുരാതനവും ചൈതന്യവത്തുമായ ഒരു പുണ്യസങ്കേതമാണ്.
+               ഐതിഹ്യങ്ങൾ അനുസരിച്ച്, മൂകാംബികാ ദേവിയെ ദർശിക്കാൻ തീർത്ഥയാത്ര നടത്തിയ ഭക്തരായ പൂർവ്വികരുടെ പ്രാർത്ഥനകളുമായും തപസ്സുമായും
+               ഈ ക്ഷേത്രത്തിന്റെ ഉത്ഭവം ബന്ധപ്പെട്ടിരിക്കുന്നു.
+               അവരുടെ തീക്ഷ്ണമായ ഭക്തിയുടെ ഫലമായി ഭഗവതിയുടെ ദിവ്യസാന്നിധ്യം ഈ പുണ്യഭൂമിയിൽ കുടികൊള്ളുകയും, അങ്ങനെ പുഴക്കരക്കാവ് പ്രദേശം
+               പവിത്രമായ ഒരു ആരാധനാകേന്ദ്രമായി മാറുകയും ചെയ്തു എന്നാണ് വിശ്വസിക്കപ്പെടുന്നത്.
+               സംരക്ഷണത്തിന്റെയും നീതിയുടെയും മാതൃവാത്സല്യത്തിന്റെയും പ്രതീകമായ ഭദ്രകാളി ഭാവത്തിലുള്ള വടക്കൻചൊവ്വ ഭഗവതിയാണ് ഇവിടുത്തെ
+               പ്രധാന പ്രതിഷ്ഠ.
+               ഭഗവതിയോടൊപ്പം പരമശിവൻ, ചാമുണ്ഡി, മുത്തപ്പൻ, നാഗരാജാവ്, നാഗയക്ഷി എന്നീ ഉപദേവതകളും ഇവിടെ കുടികൊള്ളുന്നു.
+               ഭക്തരുടെ വിളികേൾക്കുന്ന അമ്മയായിട്ടാണ് ഭഗവതിയെ ഇവിടെ ആരാധിക്കുന്നത്.
+               തങ്ങളെ അഭയം പ്രാപിക്കുന്ന ഏവർക്കും ശക്തിയും അനുഗ്രഹവും സംരക്ഷണവും നൽകാൻ ഇവിടുത്തെ ചൈതന്യത്തിന് കഴിയുമെന്ന് തലമുറകളായി
+               ഭക്തർ വിശ്വസിച്ചുപോരുന്നു.
+               ക്ഷേത്രത്തിലെ ഏറ്റവും പ്രധാനപ്പെട്ട ആഘോഷങ്ങളിലൊന്നാണ് മകരം ഇരുപത്തെട്ടുച്ചാൽ മഹോത്സവം.
+               ഭക്തജനങ്ങളുടെ വലിയ ഭക്തിയോടും പങ്കാളിത്തത്തോടും കൂടി പരമ്പരാഗതമായ ചടങ്ങുകളോടെയാണ് ഇത് ആഘോഷിക്കപ്പെടുന്നത്. ദേവതകളെ
+               പ്രീതിപ്പെടുത്തുന്നതിനായി തലമുറകളായി കൈമാറിവന്ന വലിയ ഗുരുതി ഉൾപ്പെടെയുള്ള ശക്തിയേറിയ കർമ്മങ്ങളും വഴിപാടുകളും ഇവിടെ
+               നടത്തിവരുന്നു.
+               ഇന്നും പൂർവ്വികരുടെ ഭക്തിയുടെയും ദൈവിക ചൈതന്യത്തിന്റെയും അടയാളമായി ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി
+               ക്ഷേത്രം നിലകൊള്ളുന്നു</p>
+               <!-- <div class="appoinment_bt"><a href="#">Make Appoinment</a></div> -->
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <!--services section end -->
+   <!--gallery section start -->
+   <div class="gallery_section layout_padding">
+      <div class="container text-center">
+
+         <h2 class="gallery_title">
+            Photo & Video <span>GALLERY</span>
+         </h2>
+
+         <p class="gallery_description" style="margin-bottom: 30px;">
+            ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രത്തിലെ ഏറ്റവും പ്രധാനപ്പെട്ട ഉത്സവമാണ് വലിയ ഗുരുതി (കലശം).
+            കേരളത്തിലെ ക്ഷേത്രങ്ങളിൽ വിശേഷാൽ നടത്തിവരുന്ന അതീവ പ്രാധാന്യമുള്ള ഒരു ആരാധനാ രീതിയാണ് വലിയ ഗുരുതി (കലശം) സമർപ്പണം.
+         </p>
+
+         <div class="video_wrapper">
+            <iframe width="100%" height="500" src="https://www.youtube.com/embed/oZ4Lhc7KVQY" frameborder="0"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+               allowfullscreen>
+            </iframe>
+         </div>
+
+      </div>
+   </div>
+   <!--gallery section end -->
+   <!--about section start -->
+   <!-- <div class="about_section layout_padding">
+         <div class="container">
+            <h1 class="about_taital">About</h1>
+            <div class="about_section_2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="image_6">
+                        <div class="play_icon_3"><a href="#"><img src="{% static 'Main/images/play-icon-2.png' %}"></a></div>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <h1 class="about_taital_1">Best Tranning Language School</h1>
+                     <p class="about_text">It is a long established fact that a reader will be distracted by the readable content of a pageIt is a long established fact that a reader will be distracted by the readable content of a page</p>
+                     <div class="appoinment_bt"><a href="#">Read More</a></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div> -->
+   <!--about section end -->
+   <!--courses section start -->
+   <style>
+      /* 5 Column Layout for Deities */
+      @media (min-width: 992px) {
+         .five-column .custom-col {
+            flex: 0 0 20%;
+            max-width: 20%;
+         }
+      }
+
+      /* --- NEW DEITY CARD STYLES --- */
+      .deity_card {
+         background-color: #daba4b; /* Mustard Yellow from screenshot */
+         border-radius: 8px;
+         padding: 30px 15px;
+         text-align: center;
+         height: 100%; /* Ensures all cards are identical height */
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         transition: all 0.3s ease;
+         box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      }
+
+      /* The white card from your screenshot */
+      .deity_card.active, .deity_card:hover {
+         background-color: #ffffff;
+         box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      }
+
+      .deity_card img {
+         max-height: 110px;
+         width: auto;
+         object-fit: contain;
+         margin-bottom: 25px; /* Replaces the <br> tags */
+      }
+
+      .deity_card h6 {
+         color: #333;
+         font-size: 17px;
+         font-weight: 500;
+         margin: 0;
+         line-height: 1.4;
+      }
+      /* ----------------------------- */
+
+      /* Pooja Section Styles */
+      .pooja_section::before {
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgba(255, 255, 255, 0.90);
+      }
+
+      .pooja_section .container {
+         z-index: 2;
+      }
+
+      .main_title {
+         color: #f26522;
+         font-size: 36px;
+         font-weight: 600;
+         margin-bottom: 50px;
+         margin-top: 50px;
+      }
+
+      .pooja_card {
+         background: #ffffff;
+         padding: 25px 15px;
+         margin-bottom: 25px;
+         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+         font-weight: 500;
+         transition: 0.3s ease;
+         cursor: pointer;
+         min-height: 90px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+      }
+
+      .pooja_card:hover {
+         background: #f26522;
+         color: #fff;
+         transform: translateY(-5px);
+      }
+
+      .more_btn {
+         margin-top: 40px;
+      }
+
+      .more_btn a {
+         background: #f26522;
+         color: #fff;
+         padding: 15px 45px;
+         border-radius: 30px;
+         text-decoration: none;
+         font-weight: 500;
+         display: inline-block;
+         transition: 0.3s;
+      }
+
+      .more_btn a:hover {
+         background: #d94e10;
+      }
+   </style>
+
+
+<div class="row d-flex justify-content-center">
+    <h1 style="font-weight: 800; color: #b35900; text-transform: uppercase; letter-spacing: 1px;"> പ്രധാന പൂജകൾ</h1>
+</div>   <div class="row">
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">അന്നദാനം</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">വലിയ കുരുതി (കലശം )</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">കാളസർപ്പദോഷപരിഹാരപൂജ</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">ദിവസ പൂജ</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">പ്രതിമ സമർപ്പണം</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">ചെറിയ ഗുരുതി</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">കള്ള്, വറപൊടി നേദ്യം</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">കോഴി ഉഴിഞ്ഞു വയ്ക്കൽ</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">കൂട്ട നമസ്കാരം</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">പിതൃ നമസ്കാരം</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">പട്ടും താലിയും ചാർത്തൽ</div></div>
+      <div class="col-md-3 col-sm-6"><div class="pooja_card">മുട്ടിറക്കൽ</div></div>
+
+   </div>
+   <div class="row d-flex justify-content-center">
+         <div class="more_btn">
+            <a href="{% url 'Guest:Login' %}">FOR MORE POOJA BOOKING, PLEASE LOGIN HERE.</a>
+         </div>
+   <!--courses section end -->
+   <!--events section start -->
+   <div class="events_section layout_padding" id="festival">
+      <div class="container">
+         <h1 align="center" class="events_taital">പ്രധാന ഉത്സവങ്ങൾ</h1>
+         <!-- <p class="events_text">It is a long established fact that a reader will be distracted by the readable c</p> -->
+         <div class="events_section_2">
+            <div class="row">
+               <div class="col-md-6">
+                  <div class="images_main">
+                     <img src="{% static 'Main/images/pic3.jpg' %}" class="image_7"  style="width:500px; height:375px; object-fit:cover; border-radius:8px;">
+                  </div>
+                  <p class="lorem_text">നവരാത്രി മഹോത്സവം  </p>
+                  <div class="time_section">
+                     <!-- <div class="live_text">Live event</div> -->
+                     <!-- <div class="date_text">10 Feb 2025</div> -->
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="images_main">
+                     <img src="{% static 'Main/images/pic1.jpg' %}" class="image_7"  style="width:500px; height:375px; object-fit:cover; border-radius:8px;">
+                  </div>
+                  <p class="lorem_text">മകരം ഇരുപത്തെട്ടുച്ചാൽ മഹോത്സവം </p>
+                  <div class="time_section">
+                     <!-- <div class="live_text"></div> -->
+                     <!-- <div class="date_text">10 Feb 2026</div> -->
+                  </div>
+               </div>
+            </div>
+            <div class="read_bt"><a href="{% url 'User:Festivals' %}">Read more</a></div>
+         </div>
+      </div>
+   </div>
+   <!--events section end -->
+   <!--students section start -->
+   <div class="students_section layout_padding" id="admin">
+      <div class="container">
+         <h1 class="courses_taital">Administration</h1>
+         <p class="courses_text">ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്ര ഭരണസമിതി</p>
+         <div class="students_section_2 layout_padding">
+            <div class="client_main">
+               <div class="client_left">
+                  <div class="image_9"><img src="{% static 'Main/images/img-9.png' %}"></div>
+               </div>
+               <div class="client_right">
+                  <h1 class="name_text">മുരളീധരൻ ടി. ബി.</h1><BR>President:
+                  <p class="client_text">ഭക്തനും ഭഗവാനും (ദൈവവും) തമ്മിലുള്ള അകലം ഇല്ലാതാക്കുക എന്നതാണ് ഞങ്ങളുടെ ലക്ഷ്യം. ഈ ഡിജിറ്റൽ
+                     പ്ലാറ്റ്‌ഫോമിലൂടെ, ദൂരപരിധികളില്ലാതെ ഓരോ പ്രാർത്ഥനയും അതിന്റെ ലക്ഷ്യസ്ഥാനത്ത് എത്തുന്നുവെന്ന് ഞങ്ങൾ
+                     ഉറപ്പുവരുത്തുന്നു; അതോടൊപ്പം ആധുനിക ലോകത്ത് നമ്മുടെ പുരാതന ആചാരങ്ങളുടെ പവിത്രത കാത്തുസൂക്ഷിക്കുകയും ചെയ്യുന്നു.</p>
+                  <div class="quote_icon"><img src="{% static 'Main/images/quote-icon.png' %}"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--students section end -->
+   <!--newsletter section start -->
+   <!-- <div class="container">
+         <div class="newsletter_section layout_padding">
+            <h1 class="newsletter_taital">Subscribe Our Newsletter</h1>
+            <div class="mail_main">
+               <input type="text" class="email_text" placeholder="Enter Your email " name="Enter Your email ">
+               <div class="left_arrow"><a href="#"><img src="{% static 'Main/images/left-arrow.png' %}"></a></div>
+            </div>
+         </div>
+      </div> -->
+   <!--newsletter section end -->
+   <!--footer section start -->
+   <div class="footer_section" id="contact">
+      <div class="container">
+         <div class="footer_content text-center">
+
+            <!-- Logo Circle -->
+            <img src="{% static 'Main/images/logo11.png' %}" style="width: 150px;">
+
+            <!-- <h6 class="sub_title">DAKSHINA KASHI</h6> -->
+
+            <h2 class="temple_name">
+               ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രം
+            </h2>
+
+            <p class="footer_info">
+              ചേലാമറ്റം, ഒക്കൽ പി.ഒ., പെരുമ്പാവൂർ,<BR> എറണാകുളം ജില്ല,കേരളം - 683550
+            </p>
+
+            <p class="footer_info">
+               Email id: puzhakkarakkavchm@gmail.com
+            </p>
+
+            <p class="footer_info">
+               Phone Numbers : 9388227128 , 7561805819
+            </p>
+
+            <p class="footer_links">
+               Terms and Conditions & Privacy Policy
+            </p>
+
+         </div>
+      </div>
+   </div>
+   <!-- <div class="call_main">
+               <div class="call_text"><img src="{% static 'Main/images/call-icon.png' %}"><span class="padding_left_15">Call Now  +01 123467890</span></div>
+               <div class="call_text"><img src="{% static 'Main/images/mail-icon.png' %}"><span class="padding_left_15">demo@gmail.com</span></div>
+            </div>
+            <div class="social_icon">
+               <ul>
+                  <li><a href="#"><img src="{% static 'Main/images/fb-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'Main/images/twitter-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'Main/images/linkedin-icon.png' %}"></a></li>
+                  <li><a href="#"><img src="{% static 'Main/images/instagram-icon.png' %}"></a></li>
+               </ul>
+            </div>
+         </div>
+      </div> -->
+   <!--footer section end -->
+   <!--copyright section start -->
+   <div class="copyright_section">
+      <div class="container">
+         <!-- <p class="copyright_text"> 2023 All Rights Reserved. Design by <a href="html.design">Free Html Templates</a> -->
+         </p>
+      </div>
+   </div>
+   <!--copyright section end -->
+   <!-- Javascript files-->
+   <script src="{% static 'Main/js/jquery.min.js' %}"></script>
+   <script src="{% static 'Main/js/popper.min.js' %}"></script>
+   <script src="{% static 'Main/js/bootstrap.bundle.min.js' %}"></script>
+   <script src="{% static 'Main/js/jquery-3.0.0.min.js' %}"></script>
+   <script src="{% static 'Main/js/plugin.js' %}"></script>
+   <!-- sidebar -->
+   <script src="{% static 'Main/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+   <script src="{% static 'Main/js/custom.js' %}"></script>
+   <!-- javascript -->
+   <!-- <script src="{% static 'Main/js/owl.carousel.js' %}"></script> -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+
+</html>

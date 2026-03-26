@@ -1,0 +1,104 @@
+{% extends 'User/Header.html' %}
+{% block content %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: "Segoe UI", Arial, sans-serif; background: #f2f4f7; padding: 20px; }
+        .booking-table { width: 100%; border-collapse: collapse; background: #fff; margin-bottom: 30px; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+        .booking-table th, .booking-table td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        .booking-header { background: #f8f9fa; }
+        .status-badge { padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 13px; }
+        .status-confirmed { background: #d4edda; color: #155724; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+        .status-completed { background: #cce5ff; color: #004085; }
+    </style>
+</head>
+
+<body>
+
+    <h2>My Booking History</h2>
+
+    {% for i in bookingdata %}
+    <table class="booking-table">
+        <tr class="booking-header">
+            <td colspan="6">
+                <strong>Booking Number :</strong> {{ i.booking_number }} <br>
+                <strong>Booked On :</strong> {{ i.created_at|date:"d M Y, h:i A" }} <br>
+                <strong>Pooja Dates :</strong> {{ i.booking_from_date|date:"d M Y" }} 
+                {% if i.booking_to_date %} to {{ i.booking_to_date|date:"d M Y" }} {% endif %} <br>
+                <strong>Grand Total :</strong> ₹{{ i.booking_total }} <br>
+
+                <div style="margin-top: 8px;">
+                    <strong>Booking Status :</strong>
+                    {% if i.booking_status == 1 %}
+                        <span class="status-badge status-confirmed">✅ Confirmed</span>
+                    {% elif i.booking_status == 2 %}
+                        <span class="status-badge status-cancelled">❌ Cancelled</span>
+                    {% elif i.booking_status == 3 %}
+                        <span class="status-badge status-completed">🎉 Completed</span>
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+
+        <tr style="background: #eee;">
+            <th>S.No</th>
+            <th>Pooja Details</th>
+            <th>Devotee Info</th>
+            <th>Qty & Rate</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+        </tr>
+
+        {% for j in i.items.all %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            
+            <td>
+                <strong>{{ j.pooja_id.pooja_name }}</strong><br>
+                <small style="color: #666;">Deity: {{ j.pooja_id.deity_id.deity_name }}</small>
+            </td>
+            
+            <td>
+                <strong>Name:</strong> {{ j.devotee_name|default:"N/A" }}<br>
+                <strong>Star:</strong> {{ j.birthstar_id.birthstar_name|default:"N/A" }}
+                {% if j.special_request %}
+                    <br><small><strong>Note:</strong> {{ j.special_request }}</small>
+                {% endif %}
+            </td>
+            
+            <td>
+                {{ j.quantity }} x ₹{{ j.rate }}
+            </td>
+            
+            <td><strong>₹{{ j.line_total }}</strong></td>
+
+            <td>
+                {% if j.item_status == 1 %} Confirmed {% endif %}
+                {% if j.item_status == 2 %} <span style="color: red;">Cancelled</span> {% endif %}
+                {% if j.item_status == 3 %} <span style="color: green; font-weight: bold;">Completed</span> {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" align="center">No poojas found in this booking.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% empty %}
+    <div style="background: #fff; padding: 20px; text-align: center; border-radius: 8px;">
+        <p>You have no past bookings.</p>
+        <a href="{% url 'User:ViewPoojas' %}" style="color: #2ecc71; text-decoration: none; font-weight: bold;">Book a Pooja Now</a>
+    </div>
+    {% endfor %}
+
+</body>
+</html>
+{% endblock content %}

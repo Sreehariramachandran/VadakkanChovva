@@ -1,0 +1,83 @@
+{% extends 'Admin/Header.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Django messages -->
+    {% if messages %}
+        {% for m in messages %}
+            <script>alert("{{ m }}")</script>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Form Section -->
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-4">
+                {% if editData %}Update Birth Star{% else %}Add Birth Star{% endif %}
+            </h4>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Birth Star</label>
+                    <input type="text" 
+                           name="txt_star" 
+                           class="form-control"
+                           required
+                           placeholder="Enter birth star name"
+                           value="{% if editData %}{{ editData.birthstar_name }}{% endif %}">
+                </div>
+
+                <div class="text-center">
+                    <input type="submit" 
+                           class="btn btn-primary px-4"
+                           value="{% if editData %}Update{% else %}Submit{% endif %}">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Birth Star List</h4>
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>SI NO</th>
+                            <th>Birth Star</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i in StarData %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.birthstar_name }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'Admin:birthstar_delete' i.id %}" 
+                                   class="btn btn-sm btn-danger">
+                                   Delete
+                                </a>
+                                <a href="{% url 'Admin:birthstar_edit' i.id %}" 
+                                   class="btn btn-sm btn-info">
+                                   Edit
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

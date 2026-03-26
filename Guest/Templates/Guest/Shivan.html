@@ -1,0 +1,85 @@
+{% extends 'Guest/Header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sivan</title>
+
+<style>
+body{
+    background: linear-gradient(to right,#eef2ff,#f8f9ff);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+    margin-top:30px;
+    color:#2c2c54;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+table{
+    background:#ffffff;
+    width:70%;
+    border-radius:10px;
+    border:none;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+td{
+    border:none;
+}
+
+img{
+    border-radius:10px;
+    border:4px solid #2c2c54;
+    padding:4px;
+}
+
+h4{
+    text-align:justify;
+    line-height:1.8;
+    font-size:16px;
+    color:#333;
+    padding:10px 20px;
+}
+
+form{
+    margin-bottom:40px;
+}
+</style>
+
+</head>
+<body>
+    <form action="" method="post">
+         {% csrf_token %} 
+         <h2 align="center">ശിവഭഗവാൻ</h2>
+         <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td colspan="2" align="center">
+                <img src="{% static 'Main/images/sivaling.png' %}" width="150" height="150" alt="Profile Picture">
+            </td>
+            </tr>
+            <!-- <tr>
+                <td><b>Lord Shiva</b></td>
+            </tr> -->
+            <tr>
+                <td><h4>
+                    പരിവർത്തനത്തിന്റെയും കരുത്തിന്റെയും ദൈവിക കൃപയുടെയും പരമോന്നത പ്രതീകമായി ഹിന്ദുധർമ്മത്തിൽ ആരാധിക്കപ്പെടുന്ന പ്രധാന
+                    ദേവനാണ് പരമശിവൻ. ചേലാമറ്റം ശ്രീ പുഴക്കരക്കാവ് വടക്കൻചൊവ്വ ഭഗവതി ക്ഷേത്രത്തിൽ, ഈശ്വരന്റെ അനന്തവും നിരാകാരവുമായ സ്വഭാവത്തെ
+                    സൂചിപ്പിക്കുന്ന 'ശിവലിംഗ' രൂപത്തിലാണ് ഭഗവാനെ ആരാധിക്കുന്നത്. സൃഷ്ടിയുടെയും പരിശുദ്ധിയുടെയും ആത്മീയ ഊർജ്ജത്തിന്റെയും
+                    ശക്തമായ അടയാളമാണ് ശിവലിംഗം. സമാധാനത്തിനും ആത്മബലത്തിനും ആത്മീയമായ ഉന്നതിക്കുമായി ഭക്തർ ശിവഭഗവാനെ പ്രാർത്ഥിക്കുന്നു.
+                    
+                    തിന്മയെ നശിപ്പിക്കുന്നവനും നീതിയെ സംരക്ഷിക്കുന്നവനുമായ ശിവഭഗവാൻ, ശാന്തതയുടെയും പ്രപഞ്ചശക്തിയുടെയും പ്രതീകമാണ്.
+                    ശിവലിംഗത്തിന് മുന്നിൽ അർപ്പിക്കുന്ന ആത്മാർത്ഥമായ പ്രാർത്ഥനകൾ മനഃശാന്തിയും അറിവും നൽകുമെന്നും, നെഗറ്റീവ് ഊർജ്ജങ്ങളിൽ
+                    നിന്ന് സംരക്ഷണം നൽകി ഭക്തരെ ഭക്തിയുടെയും ഐക്യത്തിന്റെയും പാതയിലൂടെ നയിക്കുമെന്നും ഭക്തജനങ്ങൾ വിശ്വസിക്കുന്നു.
+                    </h4>
+                </td>
+            </tr>
+             </form>
+</body>
+</html>
+{% endblock content %}

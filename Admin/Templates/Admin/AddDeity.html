@@ -1,0 +1,159 @@
+{% extends 'Admin/Header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Deity</title>
+
+<style>
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3{
+    margin-top:20px;
+    font-weight:600;
+}
+
+table{
+    border-collapse: collapse;
+    width: 60%;
+    background:#fff;
+}
+
+table th{
+    background:#f4f6f9;
+    font-weight:600;
+}
+
+table td, table th{
+    border:1px solid #ddd;
+    padding:10px;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+input[type="file"]{
+    padding:5px;
+}
+
+input[type="submit"]{
+    background:#4B49AC;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+input[type="submit"]:hover{
+    background:#3a3799;
+}
+
+img{
+    border-radius:4px;
+}
+
+a{
+    text-decoration:none;
+    color:#4B49AC;
+    font-weight:500;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+</style>
+
+</head>
+<body>
+
+{% if messages %}
+    {% for m in messages %}
+        <script>alert("{{ m }}")</script>
+    {% endfor %}
+{% endif %}
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    <h3>{% if editData %}Edit{% else %}Add{% endif %} Deity</h3>
+    
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Deity Name</td>
+            <td>
+                <input type="text" name="txt_deity" required
+                value="{% if editData %}{{ editData.deity_name }}{% endif %}">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Deity Image</td>
+            <td>
+                <input type="file" name="txt_image" {% if not editData %}required{% endif %}>
+                
+                {% if editData and editData.deity_image %}
+                    <br><br>
+                    <small>Current Image:</small><br>
+                    <img src="{{ editData.deity_image.url }}" width="80">
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="{% if editData %}Update{% else %}Submit{% endif %}">
+            </td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h3>Deity List</h3>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>SI NO</th>
+            <th>Deity</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+
+        {% for i in DeityData %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.deity_name }}</td>
+            <td>
+                {% if i.deity_image %}
+                    <img src="{{ i.deity_image.url }}" width="60">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'Admin:deity_delete' i.id %}">Delete</a> |
+                <a href="{% url 'Admin:deity_edit' i.id %}">Edit</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" align="center">No deities found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</form>
+
+</body>
+</html>
+{% endblock content %}
