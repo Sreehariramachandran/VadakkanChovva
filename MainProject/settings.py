@@ -86,11 +86,11 @@ WSGI_APPLICATION = 'MainProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_vadakkanchowa',  
-        'USER': 'postgres',
-        'PASSWORD': 'murali@123', 
+        'NAME': 'poojadb',
+        'USER': 'poojauser',
+        'PASSWORD': 'Aadaloodakam@321',
         'HOST': 'localhost',
-        'PORT': '5432',              
+        'PORT': '5432',
     }
 }
 
